@@ -1,0 +1,343 @@
+\documentclass[letterpaper,twoside,11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\title{Takehome Exam 2}
+\newtheorem{lemma}{Lemma}
+\author{Jonathan Andr\'es Ni\~no Cort\'es}
+\begin{document}
+\maketitle
+\textbf{Problem 1.} Find all possible Laurent series expansions centered at 0 of the function $\frac{1}{z^2+2z}$.
+
+Hint: there are two ways to choose the annulus, hence two diferent Laurent series expansions.
+
+\begin{proof}
+For the first expansion we take any annulus between $r=0$ and $r=2$. Now to get the Laurent decomposition we apply partial fractions.
+
+\begin{equation}
+\frac{1}{z^2+2z}=\frac{A}{z}+\frac{B}{z+2} \implies 1=A(z+2)+Bz\nonumber
+\end{equation}
+
+When $z=0$ we have
+\begin{equation}
+1=2A  \implies A = \frac{1}{2} \nonumber
+\end{equation}
+
+When $z=-2$
+\begin{equation}
+1=-2B  \implies B = -\frac{1}{2} \nonumber
+\end{equation}
+
+So, 
+\begin{equation}
+\frac{1}{z^2+2z}=\frac{1}{2z}+\frac{1}{-2(z+2)} \implies 1=A(z+2)+Bz\nonumber
+\end{equation}
+
+$\frac{1}{-2(z+2)}$ is analytic on any neighborhood of radius $r<2$ arround 0, and $\frac{1}{2z}$ is analytic on any neighborhood or radius $r>0$ arround infinity. So this is indeed the Laurent descomposition of our function.
+
+Now, to expand $\frac{1}{z^2+2z}$ we use the geometric series.
+
+\begin{equation}
+\frac{1}{-2(z+2)} = \frac{1}{-4(z/2+1)}=\frac{1}{-4(1-(-z/2))}= -\frac{1}{4}\sum_{n=0}^{\infty}(\frac{-z}{2})^n = \sum_{n=0}^{\infty}\frac{(-1)^{n+1}z^n}{2^{n+2}}\nonumber
+\end{equation}
+
+We can see that if $n=-1$ then $\frac{(-1)^{n+1}z^n}{2^{n+2}}=\frac{(-1)^{0}z^{-1}}{2^{1}}=\frac{1}{2z}$ which is our negative power term in the Laurent descomposition. Therefore,
+
+\begin{equation}
+\sum_{n=-1}^{\infty}\frac{(-1)^{n+1}z^n}{2^{n+2}} \nonumber
+\end{equation}
+
+is the first Laurent expansion.
+
+For the second Laurent expansion we take the annulus such that it is between 2 and $\infty$. We use the change of variable $z=1/w$ to compute the expansion of the function at $\infty$.
+
+\begin{equation}
+\frac{1}{(1/w)^2+2(1/w)}= \frac{w^2}{1+2w}\nonumber
+\end{equation}
+
+Again using the geometric series
+
+\begin{equation}
+\frac{w^2}{1+2w}=\frac{w^2}{1-(-2w)}=w^2\sum_{n=0}^{\infty}(-2w)^n=\sum_{n=0}^{\infty}(-2)^nw^{n+2}= \sum_{n=2}^{\infty}\frac{(-2)^{n-2}}{z^{n}}\nonumber
+\end{equation}
+
+Finally, we can write this as
+
+\begin{equation}
+\sum_{-\infty}^{n=2}(-2)^{-n-2}z^{n}=\sum_{-\infty}^{n=2}(-2)^{n}z^{n} \nonumber
+\end{equation}
+\end{proof}
+
+\newpage
+\textbf{Problem 2.} Suppose $f(z)$ is analytic on the punctured plane $D = \mathbb{C}\backslash\{0\}$. Integrating its Laurent series expansion, discuss when there exists a \underline{univalued} function $g(z)$ on $\mathbb{C}\backslash\{0\}$ such
+that $g'(z) = f(z)$.
+
+\begin{proof}
+Since $f(z)$ is analytic on $\mathbb{C}\backslash\{0\}$ then it is analytic on any annulus with center at 0. Therefore it has a Laurent series expansion.
+
+This is of the form
+
+\begin{equation}
+f(z)=\sum_{-\infty}^{\infty}c_kz^k \nonumber
+\end{equation}
+
+If we integrate the terms that appear on the series we have to consider two cases.
+
+If $k\not = -1$, then 
+\begin{equation}
+\int c_kz^k = \frac{c_kz^{k+1}}{k+1} + C\nonumber
+\end{equation}
+Which are univalued functions analytic on $\mathbb{C}\backslash\{0\}$.
+
+If $k=-1$, then the integral $\int c_{-1}z^{-1} = c_{-1}\text{ln}(z)+ C$ which is a multivalued function.
+
+So we conclude that the function $g$ exists when the $c_{-1}$ term in the Laurent series expansion of $f$ is equal to 0.
+\end{proof}
+\newpage
+
+\textbf{Problem 3.} Find all the isolated singularities of the functions $\frac{\text{cos}(z)}{z^2-\pi^2/4}$ on $\mathbb{C} \cup \{\infty\}$
+Classify them accordingly to the categories removable / pole / essential.
+\begin{proof}
+
+To analyse at the points $\pi/2$ and $-\pi/2$, we apply partial fractions to $\frac{1}{z-\pi^2/4}$.
+
+\begin{eqnarray}
+\frac{1}{z-\pi^2/4}&=&\frac{A}{z-\pi/2}+\frac{B}{z+\pi/2} \nonumber
+\\ 1&=&A(z+\pi/2)+B(z-\pi/2) \nonumber
+\end{eqnarray}
+
+At $z=-\pi/2$ we have that
+\begin{equation}
+1=-\pi B \implies B=-1/\pi \nonumber
+\end{equation} 
+
+At $z=\pi/2$ we have that
+\begin{equation}
+1=\pi A \implies A=1/\pi \nonumber
+\end{equation} 
+
+So,
+\begin{eqnarray}
+\frac{\text{cos}(z)}{z-\pi^2/4}&=&\frac{\text{cos}(z)}{\pi(z-\pi/2)}-\frac{\text{cos}(z)}{\pi(z+\pi/2)} \nonumber
+\end{eqnarray}
+
+If we want to take the Laurent expansion of our function arround $-\pi/2$ then the left term is analytic in any neighborhood arround the point so that its expansion is a Taylor series expansion. Regarding the term of the right we have that
+
+\begin{equation}
+-\frac{\text{cos}(z)}{\pi(z+\pi/2)}= -\frac{1}{\pi(z+\pi/2)}\sum_{n=0}^{\infty}\frac{(-1)^{n+1}(z+\pi/2)^{2n+1}}{(2n+1)!}=\frac{1}{\pi}\sum_{n=0}^{\infty}\frac{(-1)^n(z+\pi/2)^{2n}}{(2n+1)!}\nonumber
+\end{equation}
+
+Note: the expansion of $\text{cos}(x)$ as shown above can be the deduce by calculating the Taylor series at $-\pi/2$. For simplicity this calculations are not shown.
+
+As it can be seen the series has no nonnegative power terms, so the term is analytic. Finally, the sum of two analytic functions is analytic and therefore the singularity at $-\pi/2$ is a removable singularity.
+
+Similarly, for $\pi/2$ the analytic term would be the one on the right and the left term would have series expansion of the form
+
+\begin{equation}
+\frac{\text{cos}(z)}{\pi(z-\pi/2)}= \frac{1}{\pi(z-\pi/2)}\sum_{n=0}^{\infty}\frac{(-1)^n(z-\pi/2)^{2n+1}}{(2n+1)!}=\frac{1}{\pi}\sum_{n=0}^{\infty}\frac{(-1)^n(z-\pi/2)^{2n}}{(2n+1)!}\nonumber
+\end{equation}
+
+So $\pi/2$ is also a removable singularity.
+
+Finally, to analyse the singularity at $z=\infty$ we must take the expansion at infinity of our function. So by taking $z=1/w$ we arrive to
+
+\begin{equation}
+g(w)=\frac{\text{cos}(1/w)}{(1/w)^2-\pi^2/4} = \frac{w^2\text{cos}(1/w)}{1-w^2\pi^2/4}\nonumber
+\end{equation}
+
+We can see that the singularity at $w=0$ is isolated. If we approach 0 from the real axis we get that
+
+\begin{equation}
+\lim_{x \to 0} \frac{x^2\text{cos}(1/x)}{1-x^2\pi^2/4}= \lim_{x \to 0} x^2\text{cos}(1/x) = 0\nonumber  
+\end{equation}
+
+On the other hand, if we approach 0 from the Imaginary axis we get
+\begin{eqnarray}
+\lim_{+iy \to 0} -\frac{y^2\text{cos}(1/iy)}{1+y^2\pi^2/4}&=& \lim_{+iy \to 0} -y^2\text{cos}(1/iy) \nonumber
+\\&=& \lim_{+iy \to 0} -y^2\frac{e^{-ii/y}+e^{ii/y}}{2} \nonumber
+\\&=& \lim_{+iy \to 0} -y^2\frac{e^{1/y}+e^{-1/y}}{2} \nonumber
+\\&=& \lim_{im \to \infty} -\frac{e^{m}+e^{-m}}{2m^2}\quad\text{(changing variable $1/y=m$)}\nonumber
+\\&=& \lim_{im \to \infty} -\frac{e^{m}-e^{-m}}{4m} \quad\text{(L'Hospital)}\nonumber
+\\&=&  \lim_{im \to \infty} -\frac{e^{m}+e^{-m}}{4} \quad\text{(L'Hospital)}\nonumber
+\\&=& -\frac{\infty+0}{4}=-\infty \nonumber
+\end{eqnarray}
+
+So it can be concluded that the function behaves as an essential singularity.
+\end{proof}
+
+\newpage
+\textbf{Problem 4.} Show that if $z_0$ is an isolated singularity of $f(z)$ and it is not removable, then $f(z_0)$ is an essential singularity for $e^{f(z)}$.
+
+\begin{proof}
+First assume that $z_0$ is a pole of $f$ of order $k$. Then we can write this is function as \begin{equation}f(z)=\frac{g(z)}{(z-z_0)^k} \nonumber\end{equation}.
+Where $g(z)$ is analytic and $g(z_0) \not = 0$.
+
+Now, we find two sequences $\{a_n\}$ and $\{b_n\}$ such that when they tend to zero, then $f(z_n)$ tends to $+ \infty$ and $-\infty$, respectively.
+
+For the first one take
+\begin{equation}
+a_n=\frac{\sqrt[k]{-g(z_0)}}{n}+z_0 \nonumber
+\end{equation} 
+
+
+
+We can see that as $n \to \infty$, $a_n \to a_0$.
+
+Also $f(a_n)$ would be
+
+\begin{eqnarray}
+f(a_n)&=&\frac{g(a_n)}{(\frac{\sqrt[k]{-g(z_0)}}{n}+z_0-z_0)^k} \nonumber
+\\ &=&\frac{g(a_n)}{(\frac{\sqrt[k]{-g(z_0)}}{n})^k} \nonumber
+\\ &=&\frac{n^k g(a_n)}{-g(z_0)} \nonumber
+\end{eqnarray}
+
+Now,
+\begin{equation}
+\lim_{n\to \infty}f(a_n)=\lim_{n\to \infty}\frac{n^k g(a_n)}{-g(z_0)}=\lim_{n\to \infty}\frac{n^k g(z_0)}{-g(z_0)}=\lim_{n\to \infty}-n^k = -\infty \nonumber
+\end{equation}
+
+Similarly by taking,
+
+\begin{equation}
+b_n=\frac{\sqrt[k]{g(z_0)}}{n}+z_0 \nonumber
+\end{equation}
+
+we can prove that $f(b_n) \to \infty$ as $b_n \to z_0$.
+
+Now, to analyse the singularity at $z_0$ of $e^{f(z)}$ we consider the sequences $\{e^{f(a_n)}\}$ and $\{e^{f(b_n)}\}$. As $n \to \infty$ , $e^{f(a_n)} \to e^{-\infty}=0$, and $e^{f(b_n)} \to e^{\infty}=\infty$. So we can see that $e^{f(z)}$ behaves as an essential singularity.
+
+Now, for the case where $z_0$ is an essential singularity then we can use Casorati-Weirstrass theorem that says we can get a sequence  $\{z_n\}$ such that as $z_n \to z_0$ then $f(z_0) \to w$ for any $w \in \mathbb{C}$.
+
+Now, we can define a sequence that tends to $-\infty$ as follows. Let $\{f(z_mn)\}$ be a sequence such that it tends to $-n$.
+
+By a diagonalization argument, we can take $\{f(z_ii)\}$ and this sequence will diverges to $-\infty$.
+
+Similarly, by taking $\{f(z_mn)\}$ sequences that converge to $n$ then we can have a sequence that converges to $\infty$. Finally by the same argument as in the previous case, we have a sequence such that it converges to 0 and another such that it converges to $\infty$. Therefore the singularity behaves as an essential singularity.   
+\end{proof}
+
+
+\newpage
+
+\textbf{Problem 5.} Let $f(z)$ be an analytic function on the upper half plane that is periodic,
+with real period $2\pi\lambda > 0$. Suppose that there are $A,C > 0$ such tha $|f(x + iy)| \leq  Ce^{Ay}$ for $y > 0$.
+Show that
+\begin{equation}
+\sum_{n \geq -A\lambda}a_ne^{inz/\lambda}, \nonumber
+\end{equation}
+where the series converges unformly in each half-plane $\{y \geq \epsilon\}$, for fixed $\epsilon > 0$.
+
+\begin{proof}
+We make the change of variables $w=e^{iz/\lambda}$, so that $f(z)=g(w)$. This function $g$ would be defined on the domain $D$, a puncture disk with center at 0 and some radius $r$. Notice that at $w=0$ the function $g$ has a singularity since this value of $w$ is never reach by a value of $z$. 
+
+We need to prove that this function $g$ is well-defined. So take the inverse of our transformation.
+\begin{eqnarray}
+w&=&e^{iz/\lambda} \nonumber
+\\\text{log(w)}&=&\frac{iz}{\lambda} \nonumber
+\\z&=& \lambda \frac{\text{log}(w)}{i}\nonumber
+\\z&=& \lambda \frac{\text{Log}(w)}{i}+\lambda \frac{i\text{arg}(w)}{i}\nonumber
+\\z&=&  -i\lambda\text{Log}(w)+\lambda \text{arg}(w)\nonumber
+\end{eqnarray}
+
+Then we need to show that if we take any of the branches of the argument, $f(z)$ will still be the same. That is 
+\begin{equation}
+f(z)= f(-i\lambda\text{Log}(w)+\lambda \text{arg}(w)+\lambda 2 \pi)=f(-i\lambda\text{Log}(w)+\lambda \text{arg}(w)) \nonumber
+\end{equation}
+
+But since $f$ has period $2 \pi \lambda$ this condition is given.
+
+Now by developing the expression for $w$ we can take
+
+\begin{eqnarray}
+w&=&e^{iz/\lambda} \nonumber
+\\w&=&e^{i(x+iy)/\lambda} \nonumber
+\\w&=&e^{(ix-y)/\lambda} \nonumber
+\\w&=&e^{ix/\lambda}e^{-y/\lambda} \nonumber
+\\w^{\lambda}&=&e^{ix}e^{-y} \nonumber
+\\e^{-ix}w^{\lambda}&=&e^{-y} \nonumber
+\end{eqnarray}
+
+Then, the condition that $|f(x + iy)| \leq  Ce^{Ay}$ can be restated in the following way. 
+\begin{eqnarray}
+|f(x + iy)| &\leq&  Ce^{Ay}\nonumber
+\\|g(w)| &\leq&  Ce^{Ay}\nonumber
+\\e^{-Ay}|g(w)| &\leq&  C \nonumber
+\\e^{-Aix}w^{A\lambda}|g(w)| &\leq&  C \nonumber
+\\|e^{-Aix}w^{A\lambda}||g(w)| &\leq&  C \nonumber
+\\|w^{A\lambda}g(w)| &\leq&  C \nonumber
+\end{eqnarray}
+Hence $h(w)=w^{A\lambda}g(w)$, its a bounded function in our domain and therefore its Laurent expansion is a normal power series expansion, meaning that $h$ can be analiticaly extended in the whole disk.
+
+Therefore, the function
+\begin{equation}
+g(w)=\frac{h(w)}{w^{\lfloor A\lambda\rfloor}} \nonumber
+\end{equation}
+
+is a pole with center 0 and degree ${\lfloor A\lambda\rfloor}$. Therefore it has Laurent series expansion of the form
+\begin{equation}
+\sum_{k={-\lfloor A\lambda\rfloor}}^{\infty} a_kw^{k} = \sum_{k\geq {- A\lambda}}^{\infty} a_ke^{ikz/\lambda}  \nonumber
+\end{equation}
+
+Which is the result we wanted to prove.
+
+Also we can see that $|w|=e^{-y/\lambda}$ that is $y>0$.  If we take $y>\epsilon$ then this upper half plane gets map into a puncture disk and we show that the function is analytic in that domain. Therefore it is analytic in any of the half-planes mentioned. 
+\end{proof}
+\newpage
+
+\textbf{Problem 6.} Consider the continuous function $f(e^{i\theta}) = \theta^2, -\pi < \theta \leq \pi$. Find
+the complex Fourier series of $f(e^{i\theta})$. Why does the series converge to the function? (except at some
+points!) By substituting $\theta = 0$, show that
+
+\begin{equation}
+\frac{\pi^2}{12}=1-\frac{1}{2^2}+\frac{1}{3^2}-\frac{1}{4^2}+\cdots . \nonumber
+\end{equation}
+
+\begin{proof}
+The complex Fourier series of $f(e^{i\theta})$ is of the form $\sum_{-\infty}^{\infty}c_ke^{-ik\theta}$.
+
+To calculate each $c_k$ we must evaluate \begin{equation}\int_{-\pi}^{\pi} f(e^{i\theta})e^{-ik\theta}\frac{d\theta}{2\pi}\nonumber \end{equation}
+
+We have two cases, if $k=0$ then 
+\begin{eqnarray}
+\int_{-\pi}^{\pi} f(e^{i\theta})e^{-ik\theta}\frac{d\theta}{2\pi} &=& \int_{-\pi}^{\pi} \theta^2\frac{d\theta}{2\pi}\nonumber 
+\\ &=& \frac{\theta^3}{6\pi}\bigg|_{-\pi}^{\pi} \nonumber
+\\ &=& \frac{\pi^3}{6\pi}-\frac{(-\pi)^3}{6\pi} \nonumber
+\\ &=& \frac{\pi^2}{3}\nonumber.
+\end{eqnarray}
+If $k\not = 0$ then we use integration by parts
+\begin{eqnarray}
+\int_{-\pi}^{\pi} f(e^{i\theta})e^{-ik\theta}\frac{d\theta}{2\pi} &=& \int_{-\pi}^{\pi} \theta^2e^{-ik\theta}\frac{d\theta}{2\pi}\nonumber 
+\\ &=& -\frac{\theta^2e^{-ik\theta}}{ik2\pi}\bigg|_{-\pi}^{\pi} + \int_{-\pi}^{\pi}\frac{\theta e^{-ik\theta}d\theta}{ik\pi}\nonumber
+\\ &=& -\frac{\theta^2e^{-ik\theta}}{ik2\pi}\bigg|_{-\pi}^{\pi} + \frac{\theta e^{-ik\theta}}{k^{2}\pi}\bigg|_{-\pi}^{\pi}-\int_{-\pi}^{\pi}\frac{ e^{-ik\theta}d\theta}{k^2\pi} \nonumber
+\\ &=& -\frac{\theta^2e^{-ik\theta}}{ik2\pi}\bigg|_{-\pi}^{\pi} + \frac{\theta e^{-ik\theta}}{k^{2}\pi}\bigg|_{-\pi}^{\pi}+\frac{ e^{-ik\theta}d\theta}{-ik^3\pi}\bigg|_{-\pi}^{\pi} \nonumber
+\\ &=& 0 + (\frac{\pi e^{-ik\pi}}{k^{2}\pi}-\frac{-\pi e^{ik\pi}}{k^{2}\pi})+0 \nonumber
+\\ &=& \frac{e^{-ik\pi}}{k^{2}}+\frac{e^{ik\pi}}{k^{2}} \nonumber
+\\ &=& \frac{(-1)^k}{k^{2}}+\frac{(-1)^k}{k^{2}} \nonumber
+\\ &=& \frac{2(-1)^k}{k^{2}}\nonumber
+\end{eqnarray}
+
+So the Fourier expansion is
+\begin{equation}
+\theta^2=\sum_{k=-\infty}^{-1} \frac{2(-1)^k}{k^{2}}e^{-ik\pi} +\frac{\pi^{2}}{3}+ \sum_{k=1}^{\infty} \frac{2(-1)^k}{k^{2}}e^{-ik\pi}\nonumber
+\end{equation}
+
+When we evaluate at $\theta = 0$ we get 
+
+\begin{equation}
+0=\sum_{k=-\infty}^{-1} \frac{2(-1)^k}{k^{2}}+\frac{\pi^{2}}{3}+ \sum_{k=1}^{\infty} \frac{2(-1)^k}{k^{2}}\nonumber
+\end{equation}
+
+Notice that the sum in the left is equal to the sum in the right since $\frac{2(-1)^{-k}}{(-k)^{2}}=\frac{2(-1)^k}{k^{2}}$. Therefore, we get that 
+
+\begin{eqnarray}
+\frac{\pi^{2}}{3}&=&-2\sum_{k=1}^{\infty} \frac{2(-1)^k}{k^{2}}\nonumber
+\\&=&4\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^{2}} \nonumber
+\\\frac{\pi^{2}}{12}&=&\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^{2}} \nonumber
+\end{eqnarray}
+
+Which is the result we want to prove.
+
+Notice that since the function is differentiable at $(-\pi,\pi)$ then ny a theorem in Section VI.6 of the book the function converges to the series. For the point $\pi$ we cannot conclude if the series converges or not to that point. 
+\end{proof}
+
+\end{document}

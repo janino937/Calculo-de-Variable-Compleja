@@ -1,0 +1,192 @@
+\documentclass[letterpaper,twoside,11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\title{Takehome Exam 1}
+\newtheorem{lemma}{Lemma}
+\author{Jonathan Andr\'es Ni\~no Cort\'es}
+\begin{document}
+\maketitle
+\textbf{Problem 1.} We have two discontinuities in $z=0$ and $z=2$. So to evaluate this integral we can separate it into two integrals.
+
+\begin{equation}
+\oint_{|z-1|=3} \frac{dz}{z(z-2)e^z} = \oint_{|z|=\epsilon} \frac{dz}{z(z-2)e^z} + \oint_{|z-2|=\epsilon} \frac{dz}{z(z-2)e^z} \nonumber 
+\end{equation}
+
+with a sufficiently small $\epsilon$, for example, $\epsilon=\frac{1}{2}$. Now we can evaluate each of this integrals by using the Cauchy integral
+
+\begin{equation}
+2\pi i f(z)=\oint_{\delta D}\frac{f(w)}{w-z}dw \nonumber 
+\end{equation}
+
+In the first integral we take $f_1(z)=\frac{1}{(z-2)e^z}$ and in the second $f_2(z)=\frac{1}{(z)e^z}$ which in both cases are analytic in their respective integration domains.
+
+Therefore, 
+\begin{equation}
+\oint_{|z|=\epsilon} \frac{dz}{z(z-2)e^z} + \oint_{|z-2|=\epsilon} \frac{dz}{z(z-2)e^z}= 2 \pi i f_1(0)+2 \pi i f_2(2) = -\pi i + \pi i e^{-2}. \nonumber
+\end{equation}
+
+\newpage
+\textbf{Problem 2.} Note: This solution has a small mistake.
+
+Representing $z= r e^{i\theta}$ , $0 \leq \theta < 2 \pi$, $0\leq r\leq 1$, we are trying to find the maximum value of $|z^n+\lambda|=|r^ne^{in\theta}+\rho e^{i\varphi}|$. The triangle inequality, gives us an upper bound of this expression
+\begin{equation}
+|r^ne^{in\theta}+\rho e^{i\varphi}| \leq |r^ne^{in\theta}|+|\rho e^{i\varphi}|=r^n + \rho. \nonumber
+\end{equation}
+
+And there is a case in which the equality holds an it is when both vector have the same direction, i.e., when $n\theta=\varphi$. Finally the greatest value of $r^n+\rho$ in our domain is obtained when $r=1$. Therefore the maximum value of $|z^n+\lambda|$ is $1+\rho$ and it is obtained when $z=e^{i\frac{\varphi}{n}}$. 
+\newpage
+\textbf{Problem 3.}
+\begin{enumerate}[a)]
+\item $\int_{\gamma} z^3dz$. 
+
+Since $f(z)=z^3$ is analytic on $D=\{z \in \mathbb{C}:|z|\leq 1\}$, by the Cauchy theorem we have that $\int_{\gamma} z^3dz = 0$.
+
+\item $\int_{\gamma} \bar{z}^2dz$. 
+
+This function is not analytic, so we have to calculate the integral by parametrization. Take $x(\theta)=\text{cos}(\theta)$ and $y(\theta)=\text{sin}(\theta)$. Therefore the integral becomes
+
+\begin{equation}
+\int_{\gamma} \bar{z}^2dz = \int_{\gamma} (x-iy)^2(dx+idy) = \int_{0}^{2\pi} [\text{cos}(\theta)-i\text{sin}(\theta)]^2[i\text{cos}(\theta)-\text{sin}(\theta)]d\theta \nonumber
+\end{equation}
+
+But $[-\text{sin}(\theta)+i\text{cos}(\theta)]=i[\text{cos}(\theta)+i\text{sin}(\theta)]$. Also we have that $\bar{z}z=|z|^2$. So
+
+\begin{eqnarray}
+&& \int_{0}^{2\pi} [\text{cos}(\theta)-i\text{sin}(\theta)]^2[-\text{sin}(\theta)+i\text{cos}(\theta)]d\theta \nonumber 
+\\&=& \int_{0}^{2\pi} i[\text{cos}(\theta)-i\text{sin}(\theta)][\text{sin}^2(\theta)+\text{cos}^2(\theta)]d\theta \nonumber
+\\&=& i\int_{0}^{2\pi} [\text{cos}(\theta)-i\text{sin}(\theta)]d\theta \nonumber 
+\\&=& i[\text{sin}(\theta)+i\text{cos}(\theta)]\bigg\vert_0^{2\pi} =i*0=0\nonumber
+\end{eqnarray}
+\item $\int_{\gamma} \frac{1}{z}|dz|$
+
+Using the same parametrization as above and taking into account that
+\begin{eqnarray}
+|dz|&=&\bigg(\sqrt{\Big(\frac{dx}{d\theta}\Big)^2+\Big(\frac{dy}{d\theta}\Big)^2}\bigg)d\theta \nonumber
+\\&=& (\sqrt{(-\text{sin}(\theta))^2+(\text{cos}(\theta))^2})d\theta \nonumber
+\\&=& (\sqrt{\text{sin}^2(\theta)+\text{cos}^2(\theta)})d\theta \nonumber
+\\&=& d\theta \nonumber
+\end{eqnarray}
+
+we obtain the following integral:
+
+\begin{equation}
+\int_{\gamma} \frac{1}{z}|dz| = \int_{0}^{2\pi} \frac{d\theta}{\text{cos}(\theta)+i\text{sin}(\theta)} \nonumber
+\end{equation}
+
+Multiplicating and dividing by the conjugate of $z$ we get
+
+\begin{eqnarray}
+&&\int_{0}^{2\pi} \frac{d\theta}{\text{cos}(\theta)+i\text{sin}(\theta)} \nonumber
+\\&=& \int_{0}^{2\pi} \frac{[\text{cos}(\theta)-i\text{sin}(\theta)]}{[\text{cos}(\theta)+i\text{sin}(\theta)][\text{cos}(\theta)-i\text{sin}(\theta)]}d\theta \nonumber
+\\&=& \int_{0}^{2\pi} \frac{[\text{cos}(\theta)-i\text{sin}(\theta)s]}{[\text{cos}^2(\theta)+\text{sin}^2(\theta)]}d\theta \nonumber
+\\&=& \int_{0}^{2\pi} \frac{[\text{cos}(\theta)-i\text{sin}(\theta)]}{[\text{cos}^2(\theta)+\text{sin}^2(\theta)]}d\theta \nonumber
+\\&=& \int_{0}^{2\pi} [\text{cos}(\theta)-i\text{sin}(\theta)]d\theta \nonumber
+\\&=& [\text{sin}(\theta)+i\text{cos}(\theta)]\bigg\vert_{0}^{2\pi}= 0\nonumber
+\end{eqnarray}
+
+\newpage
+\textbf{Problem 4.}
+\begin{equation}
+\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty} e^{-x^2/2}e^{-itx}dx= e^{-t^2/2}, t \in \mathbb{R} \nonumber.
+\end{equation}
+
+First let us take the integral $\int_{\gamma} e^{-z^2/2}dz$ along the boundary of the domain of the rectangle. On the horizontal sides $y$ is constant so $dy=0$ and in the vertical sides $x$ is constant so $dx=0$. Therefore we can write this integral as the sum of four integrals:
+
+\begin{eqnarray}
+\int_{\gamma} e^{-z^2/2}dz=&&\int_{-R}^{+R} e^{-x^2/2}dx + i\int_{0}^{t} e^{-(R+iy)^2/2}dy +\nonumber
+\\&&\int_{+R}^{-R} e^{-(x+it)^2/2}dx+i\int_{t}^{0} e^{-(-R+iy)^2/2}dy \nonumber
+\end{eqnarray}
+
+Now we apply the ML-estimate to the second integral with $dz=idy$, $L=t$. The maximum value of $|e^{-(R+iy)^2/2}|=|e^{(-R^2-2iRy+y^2)/2}|=e^{(-R^2+y^2)/2}$ is obtained when $y=t$ so $M = e^{(-R^2+t^2)/2}$
+
+\begin{equation}
+\bigg|\int_{0}^{t} e^{-(R+iy)^2/2}idy\bigg| \leq t e^{(-R^2+t^2)/2} \nonumber
+\end{equation}
+
+Now we can see that if $R \mapsto +\infty$ then $ML$ goes to 0 and so does the modulus and therefore the value of the integral.
+
+Similarly, for the fourth integral we have that $dz=idy$, $L = t$ and $|e^{-(-R+iy)^2/2}|=|e^{(-R^2+2Riy+y^2)/2}|=e^{-R^2y^2)/2}$. So again $M=e^{(-R^2+t^2)/2}$.
+
+\begin{equation}
+\bigg|i\int_{t}^{0} e^{-(-R+iy)^2/2}dy\bigg| \leq t e^{(-R^2+t^2)/2} \nonumber
+\end{equation}
+
+And again this estimate and therefore the value of the integral tends to 0 as $R$ goes to $\infty$.
+
+So when $R$ tends to $\infty$ we have that 
+\begin{equation}
+\int_{\gamma} e^{-z^2/2}dz=\int_{-\infty}^{+\infty} e^{-x^2/2}dx - \int_{-\infty}^{+\infty} e^{-(x+it)^2/2}dx\nonumber = 0
+\end{equation}
+
+Also we have that $e^{-(x+it)^2/2}=e^{(-x^2-2xit+t^2)^2/2}=e^{-x^2/2}e^{-itx}e^{t^2/2}$. So we can rewrite the last expression as
+
+\begin{eqnarray}
+\int_{-\infty}^{+\infty} e^{-x^2/2}dx &=& \int_{-\infty}^{+\infty} e^{-(x+it)^2/2}dx\nonumber
+\\ &=& \int_{-\infty}^{+\infty} e^{-x^2/2}e^{-itx}e^{t^2/2}dx\nonumber
+\\ &=& e^{t^2/2}\int_{-\infty}^{+\infty} e^{-x^2/2}e^{-itx}dx\nonumber
+\\ e^{-t^2/2}\int_{-\infty}^{+\infty} e^{-x^2/2}dx&=&\int_{-\infty}^{+\infty} e^{-x^2/2}e^{-itx}dx\nonumber
+\end{eqnarray}
+
+Finally, we know that the improper integral $\int_{-\infty}^{+\infty} e^{-x^2/2}dx=\sqrt{2\pi}$ (see Wikipedia on Gaussian function). So we arrive to our desired expression
+
+\begin{eqnarray}
+e^{-t^2/2}\int_{-\infty}^{+\infty} e^{-x^2/2}dx&=&\int_{-\infty}^{+\infty} e^{-x^2/2}e^{-itx}dx\nonumber
+\\ e^{-t^2/2}\sqrt{2\pi}&=&\int_{-\infty}^{+\infty} e^{-x^2/2}e^{-itx}dx\nonumber
+\\ e^{-t^2/2}&=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty} e^{-x^2/2}e^{-itx}dx\nonumber
+\end{eqnarray}
+
+\newpage
+\textbf{Problem $4^{\text{prim}}$.} 
+The first one will obviously be
+
+\begin{equation}
+\int_{-\infty}^{+\infty} e^{-x^2/2}e^{-itx}dx=\sqrt{2\pi}e^{-t^2/2}+0i\nonumber
+\end{equation}
+
+since the values of $\sqrt{2\pi}e^{-t^2/2}$ are always real.
+
+For the second formula let us start by separating the real and imaginary parts of the integral.
+
+\begin{eqnarray}
+\int_{-\infty}^{+\infty} e^{-x^2/2}e^{-itx}dx&=&\int_{-\infty}^{+\infty} e^{-x^2/2}(\text{cos}(tx)-i\text{sin}(tx))dx\nonumber
+\\ &=&\int_{-\infty}^{+\infty} e^{-x^2/2}\text{cos}(tx)dx-i\int_{-\infty}^{+\infty} e^{-x^2/2}\text{sin}(tx)dx\nonumber
+\end{eqnarray}
+
+Since both representations are equal we conclude that
+
+\begin{equation}
+\int_{-\infty}^{+\infty} e^{-x^2/2}\text{cos}(tx)dx= \sqrt{2\pi}e^{-t^2/2} \text{ and } \int_{-\infty}^{+\infty} e^{-x^2/2}\text{sin}(tx)dx=0.\nonumber
+\end{equation}
+
+Which are two results that would be very difficult to get to if we try to solve these integrals in the real space alone.
+
+\newpage
+\textbf{Problem 5.}
+Take $D''$ the codomain of the function $f$. Consider the fractional linear transformation. $\mu(z)=\frac{z+i}{z+1}(1-i)$, which maps $-1 \mapsto \infty$, $1 \mapsto 1$ and $-i\mapsto 0$. This function maps the domain $D$ to a range $D'$.
+
+This function maps any point in $C$ to the real axis $\mathbb{R}$. We can prove this by a theorem of fractional linear equations that says that a fractional lineal transformation maps circles in the extended complex plain to circles (where streight lines are circles with the point $\infty$). Since a circle is uniquely determined by three different points and we have that three different points of the unit circle map to three different point of the real axis, the image of the unit circle must be $\mathbb{R}$.
+
+Also fractional linear transformations are invertible so $\mu^{-1}(z)$ exists. So know let us take the function $g: D'\longmapsto D''$, $g(z) =f(\mu^{-1}(z))$. The composition of continuous functions is also continuous (see Rudin, Principles of Mathematical Analysis) so $g$ is continuous on the domain $D'$. Also the composition of functions is analytic (this fact was mentioned in class) so $g$ is analytic on $D'\backslash\mathbb{R}$ because any point in $D'\backslash\mathbb{R}$ gets map by $\mu^{-1}$ to a point in $D\backslash C$.
+
+Now we can use the theorem proved in the section about Morera's theorem. If $g$ is continuous on $D'$ and analytic in $D'\backslash\mathbb{R}$ then $g$ is analytic in $D'$. Finally by composing the functions $g$ and $\mu$ we get that $g(\mu(z))=f(\mu^{-1}(\mu(z)))=f(z)$. Again since both functions are analytic in their respective domains then the composite function is also analytic. 
+\newpage
+\textbf{Problem 6.}
+Prove that $\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}$ converges.
+
+To prove that $S_1>S_3>S_5..$ see that $S_{2k+1}=S_{2k-1}-\frac{1}{2k}+\frac{1}{2k+1}$ we can see that $+\frac{1}{2k}-\frac{1}{2k+1}>0$ so $S_{2k-1}>S_{2k+1}$. Similarly, $S_{2k+2}=S_{2k}+\frac{1}{2k+1}-\frac{1}{2k+2}$. Again we can see that $(\frac{1}{2k+1}-\frac{1}{2k+2})>0$ so $S_{2k+2}>S_{2k}$.This shows that $S_2<S_4<S_6..$.
+
+On the other hand we can see that $S_{2k-1}>S_{2k}<S_{2k+1}$. So for every $S_{2k}$, we have that $S_{2k}<S_{2k+1}<S_{1}=1$. Therefore $S_{2k}$ is monotonically increasing and it is bounded by 1. Therefore it must have a limit. It can also be seen that $S_{2k-1}>S_{2k}\geq S_2=\frac{1}{2}$. So we have a monotically decreasing function that is also bounded so this sequence must converge.
+
+Now, to see that the limit of this sequences must be the same. We will do this by the definition of convergence of a sequence. A sequence $\{S_n\}$ of real numbers converges to $p$ if for every $\epsilon>0$ there exists an $N \in \mathbb{N}$ such that if $n\geq N$ then $|S_n-p|<\epsilon$. 
+
+
+Let $p$ be the limit of $S_{2k}$ and $p'$ be the limit of $S_{2k+1}$ and  take any $\epsilon > 0$. Since $S_{2k}$ conveges there is a number $K_1$ such that if $k\geq K_1$ then $|p-S_{2k}|<\epsilon/2$. Also there is another number $K_2$ such that if $k\geq K_2$ then $|S_{2k+1}-p'|<\epsilon/2$. Also, by Archimedean property of the real numbers there exists a natural number $N$ such that $N*\epsilon/2>1$, i.e, $\epsilon/2>1/N$.
+
+Now take any number $n\geq$ max$(N,2K_1,2K_2+1)$. Also if $n\geq N$ then $1/n\geq 1/N<\epsilon/2.$ If $n=2k$ then $|p-Sn|<\epsilon/2<\epsilon$, but also, $S_n = S_{2k} = S_{2k+1}-1/(2k+1)$. So $|S_{2k}-p'|=|-1/(2k+1)+S_{2k+1}-p'| \leq 1/(2k+1)+|S_{2k+1}-p'|<\epsilon/2 + \epsilon/2 = \epsilon$. If $n=2k+1$, then $|p'-Sn|<\epsilon/2<\epsilon$, but also, $S_n=S_{2k+1}=S_{2k+2}+1/(2k+2)$. So $|p-S_{2k+1}|=|p-S_{2k+1}-S{2k+2}|\leq |p-S_{2k+2}|+1/(2k+2)<\epsilon/2+\epsilon/2=\epsilon$. This means that $S_n$ converges both to $p$ and $p'$ but the limit of convergence of a sequence is unique (see Rudin, Principles of Mathematical Analysis). Therefore, $p$ and $p'$ are the same. 
+ 
+
+
+\end{enumerate}
+\end{document}
